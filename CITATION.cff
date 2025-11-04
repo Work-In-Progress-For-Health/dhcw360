@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: DHCW360
+message: >-
+  If you use this work and you want to cite it,
+  then you can use the metadata from this file.
+type: software
+authors:
+  - given-names: Joel
+    family-names: Henderson
+    email: joel.henderson@wales.nhs.uk
+    affiliation: https://dhcw.nhs.wales/
+    orcid: 'https://orcid.org/0009-0000-4681-282X'
+identifiers:
+  - type: url
+    value: 'https://github.com/Work-In-Progress-For-Health/dhcw360/'
+    description: Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool
+repository-code: 'https://github.com/Work-In-Progress-For-Health/dhcw360/'
+abstract: >-
+  DHCW360 - Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool
+license: See license file
