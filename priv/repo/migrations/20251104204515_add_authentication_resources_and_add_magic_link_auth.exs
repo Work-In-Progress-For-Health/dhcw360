@@ -1,4 +1,4 @@
-defmodule DHCW360.Repo.Migrations.AddAuthenticationResourcesAndAddMagicLinkAuth do
+defmodule Dryw.Repo.Migrations.AddAuthenticationResourcesAndAddMagicLinkAuth do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

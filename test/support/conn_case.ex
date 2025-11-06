@@ -1,4 +1,4 @@
-defmodule DHCW360Web.ConnCase do
+defmodule DrywWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule DHCW360Web.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use DHCW360Web.ConnCase, async: true`, although
+  by setting `use DrywWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,19 +20,19 @@ defmodule DHCW360Web.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint DHCW360Web.Endpoint
+      @endpoint DrywWeb.Endpoint
 
-      use DHCW360Web, :verified_routes
+      use DrywWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import DHCW360Web.ConnCase
+      import DrywWeb.ConnCase
     end
   end
 
   setup tags do
-    DHCW360.DataCase.setup_sandbox(tags)
+    Dryw.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

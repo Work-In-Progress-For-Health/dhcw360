@@ -1,8 +1,8 @@
 #!/bin/sh
 set -euf
 
-export App=DHCW360
-export app=dhcw360
+export App=Dryw
+export app=drwy
 export Dom=Accounts
 export dom=accounts
 export Resource=User

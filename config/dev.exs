@@ -2,11 +2,11 @@ import Config
 config :ash, policies: [show_policy_breakdowns?: true]
 
 # Configure your database
-config :dhcw360, DHCW360.Repo,
+config :drwy, Dryw.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "dhcw360_dev",
+  database: "drwy_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -17,7 +17,7 @@ config :dhcw360, DHCW360.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :dhcw360, DHCW360Web.Endpoint,
+config :drwy, DrywWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
@@ -26,8 +26,8 @@ config :dhcw360, DHCW360Web.Endpoint,
   debug_errors: true,
   secret_key_base: "uIrLWpnHfdje+SSCuEityYREdXB3RYjgdxyyM2ZhdlDD3FIDWUe96/c4ENNqpYrF",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:dhcw360, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:dhcw360, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:drwy, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:drwy, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -54,18 +54,18 @@ config :dhcw360, DHCW360Web.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :dhcw360, DHCW360Web.Endpoint,
+config :drwy, DrywWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/dhcw360_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
+      ~r"lib/drwy_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :dhcw360, dev_routes: true, token_signing_secret: "DkO4Zxx3aqzRWlrGQgZh/zeP+ReS4Upm"
+config :drwy, dev_routes: true, token_signing_secret: "DkO4Zxx3aqzRWlrGQgZh/zeP+ReS4Upm"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :default_formatter, format: "[$level] $message\n"

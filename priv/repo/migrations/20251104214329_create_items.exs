@@ -1,4 +1,4 @@
-defmodule DHCW360.Repo.Migrations.CreateItems do
+defmodule Dryw.Repo.Migrations.CreateItems do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

@@ -5,7 +5,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     DHCW360.Repo.insert!(%DHCW360.SomeSchema{})
+#     Dryw.Repo.insert!(%Dryw.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

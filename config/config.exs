@@ -49,21 +49,21 @@ config :spark,
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
   ]
 
-config :dhcw360,
-  namespace: DHCW360,
-  ecto_repos: [DHCW360.Repo],
+config :drwy,
+  namespace: Dryw,
+  ecto_repos: [Dryw.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [DHCW360.Accounts]
+  ash_domains: [Dryw.Accounts]
 
 # Configures the endpoint
-config :dhcw360, DHCW360Web.Endpoint,
+config :drwy, DrywWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: DHCW360Web.ErrorHTML, json: DHCW360Web.ErrorJSON],
+    formats: [html: DrywWeb.ErrorHTML, json: DrywWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: DHCW360.PubSub,
+  pubsub_server: Dryw.PubSub,
   live_view: [signing_salt: "VdTPYvdU"]
 
 # Configures the mailer
@@ -73,12 +73,12 @@ config :dhcw360, DHCW360Web.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :dhcw360, DHCW360.Mailer, adapter: Swoosh.Adapters.Local
+config :drwy, Dryw.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.25.4",
-  dhcw360: [
+  drwy: [
     args:
       ~w(js/app.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/* --alias:@=.),
     cd: Path.expand("../assets", __DIR__),
@@ -88,7 +88,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "4.1.7",
-  dhcw360: [
+  drwy: [
     args: ~w(
       --input=assets/css/app.css
       --output=priv/static/assets/css/app.css

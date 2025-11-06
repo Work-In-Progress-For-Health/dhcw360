@@ -1,4 +1,4 @@
-defmodule DHCW360.Repo.Migrations.AddAuthenticationResourcesAndAddMagicLinkAuthExtensions1 do
+defmodule Dryw.Repo.Migrations.AddAuthenticationResourcesAndAddMagicLinkAuthExtensions1 do
   @moduledoc """
   Installs any extensions that are mentioned in the repo's `installed_extensions/0` callback
 

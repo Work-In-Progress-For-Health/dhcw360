@@ -1,8 +1,8 @@
-# DHCW360
+# GIG Cymru IGDC Drwy
 
-Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool:
+GIG Cymru IGDC Drwy / NHS Wales DHCW Wren:
 
-- This is a simple web app pilot project that enables staff to try 360 feedback.
+- This is a web app for custom staff surveys using agile discovery for Digital Health and Care Wales (DHCW) Values-Based 360 Feedback.
 
 - This is research work in progress, not for official use nor production use.
 
@@ -13,8 +13,8 @@ Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool:
 Run:
 
 ```sh
-git clone https://github.com/joelparkerhenderson/dhcw360
-cd dhcw360
+git clone https://github.com/work-in-progress-for-health/gig-cymru-igdc-drwy
+cd gig-cymru-igdc-drwy
 mix ash.setup
 mix cinder.install
 mix phx.server
@@ -27,8 +27,8 @@ To develop this app from scratch, here are steps.
 ### Create
 
 ```sh
-mix igniter.new dhcw360 --module DHCW360 --with phx.new --install ash,ash_phoenix,ash_postgres,ash_backpex,cinder,mdex,recase
-cd dhcw360
+mix igniter.new drwy --module Dryw --with phx.new --install ash,ash_phoenix,ash_postgres,ash_backpex,cinder,mdex,recase
+cd drwy
 ```
 
 ### Authentication
@@ -77,7 +77,7 @@ mix deps.get
 mix compile
 ```
 
-## Update
+## Update deps
 
 Download:
 

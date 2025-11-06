@@ -1,9 +1,9 @@
-defmodule DHCW360.MixProject do
+defmodule Dryw.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :dhcw360,
+      app: :drwy,
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -21,7 +21,7 @@ defmodule DHCW360.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {DHCW360.Application, []},
+      mod: {Dryw.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -94,10 +94,10 @@ defmodule DHCW360.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ash.setup --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind dhcw360", "esbuild dhcw360"],
+      "assets.build": ["compile", "tailwind drwy", "esbuild drwy"],
       "assets.deploy": [
-        "tailwind dhcw360 --minify",
-        "esbuild dhcw360 --minify",
+        "tailwind drwy --minify",
+        "esbuild drwy --minify",
         "phx.digest"
       ],
       precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]

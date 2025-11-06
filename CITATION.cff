@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: DHCW360
+title: Dryw
 message: >-
   If you use this work and you want to cite it,
   then you can use the metadata from this file.
@@ -12,9 +12,9 @@ authors:
     orcid: 'https://orcid.org/0009-0000-4681-282X'
 identifiers:
   - type: url
-    value: 'https://github.com/Work-In-Progress-For-Health/dhcw360/'
-    description: Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool
-repository-code: 'https://github.com/Work-In-Progress-For-Health/dhcw360/'
+    value: 'https://github.com/Work-In-Progress-For-Health/gig-cymru-igdc-drwy/'
+    description: Gwasanaeth Iechyd Gwladol (GIG) Cymru / National Health Service (NHS) - Iechyd a Gofal Digidol Cymru (IGDC) / Wales Digital Health and Care Wales (DHCW) - Dryw / Wren
+repository-code: 'https://github.com/Work-In-Progress-For-Health/gig-cymru-igdc/'
 abstract: >-
-  DHCW360 - Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool
+  Gwasanaeth Iechyd Gwladol (GIG) Cymru / National Health Service (NHS) - Iechyd a Gofal Digidol Cymru (IGDC) / Wales Digital Health and Care Wales (DHCW) - Dryw / Wren
 license: See license file

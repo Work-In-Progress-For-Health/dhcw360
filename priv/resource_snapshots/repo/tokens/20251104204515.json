@@ -97,7 +97,7 @@
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.DHCW360.Repo",
+  "repo": "Elixir.Dryw.Repo",
   "schema": null,
   "table": "tokens"
 }

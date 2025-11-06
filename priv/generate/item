@@ -1,8 +1,8 @@
 #!/bin/sh
 set -euf
 
-export App=DHCW360
-export app=dhcw360
+export App=Dryw
+export app=drwy
 export Dom=Accounts
 export dom=accounts
 export Resource=Item
@@ -18,6 +18,11 @@ mix ash.gen.resource \
     --uuid-primary-key id \
     --relationship belongs_to:reviewer:$App.$Dom.User \
     --relationship belongs_to:reviewee:$App.$Dom.User \
+    --attribute collaboration int \
+    --attribute innovation int \
+    --attribute inclusive int \
+    --attribute excellence int \
+    --attribute compassion int \
 
 mix ash.codegen create_$resources
 mix ash.migrate
@@ -31,9 +36,9 @@ touch lib/${app}_web/live/$resources/index_live.ex
 touch lib/${app}_web/live/$resources/show_live.ex
 
 mkdir -p test/${app}_web/live/$resources
-touch test/${app}_web/live/$resources/form_live.ex
-touch test/${app}_web/live/$resources/index_live.ex
-touch test/${app}_web/live/$resources/show_live.ex
+touch test/${app}_web/live/$resources/form_test.ex
+touch test/${app}_web/live/$resources/index_test.exs
+touch test/${app}_web/live/$resources/show_test.exs
 
 cat << EOF
 Edit file lib/${app}_web/router.ex to add live routes:
