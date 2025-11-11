@@ -11,11 +11,12 @@ defmodule DrywWeb.Users.Test do
       |> Phoenix.ConnTest.init_test_session(%{})
       |> AshAuthentication.Plug.Helpers.store_in_session(user)
 
-    {:ok, conn: conn}
+    {:ok, conn: conn, user: user}
   end
 
-  test "new", %{conn: conn} do
-    conn = get(conn, ~p"/users/new")
+  test "edit", %{conn: conn, user: user} do
+    IO.inspect(user)
+    conn = get(conn, ~p"/users/#{user.id}/edit")
     response = html_response(conn, 200)
     assert response =~ "Your email address"
     assert response =~ "Your primary manager"
@@ -25,8 +26,8 @@ defmodule DrywWeb.Users.Test do
     assert response =~ "Your other connections"
   end
 
-  test "create", %{conn: conn} do
-    {:ok, lv, _html} = live(conn, ~p"/users/new")
+  test "update", %{conn: conn, user: user} do
+    {:ok, lv, _html} = live(conn, ~p"/users/#{user.id}/edit")
     result =
       lv
       |> form("#x_form", %{

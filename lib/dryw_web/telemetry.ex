@@ -53,23 +53,23 @@ defmodule DrywWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("drwy.repo.query.total_time",
+      summary("dryw.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("drwy.repo.query.decode_time",
+      summary("dryw.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("drwy.repo.query.query_time",
+      summary("dryw.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("drwy.repo.query.queue_time",
+      summary("dryw.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("drwy.repo.query.idle_time",
+      summary("dryw.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"

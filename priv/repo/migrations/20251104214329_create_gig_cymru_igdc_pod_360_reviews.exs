@@ -1,4 +1,4 @@
-defmodule Dryw.Repo.Migrations.CreateItems do
+defmodule Dryw.Repo.Migrations.CreateGigCymruIgdcPod360Reviews do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 
@@ -8,13 +8,13 @@ defmodule Dryw.Repo.Migrations.CreateItems do
   use Ecto.Migration
 
   def up do
-    create table(:items, primary_key: false) do
+    create table(:gig_cymru_igdc_pod_360_reviews, primary_key: false) do
       add :id, :uuid, null: false, default: fragment("gen_random_uuid()"), primary_key: true
 
       add :reviewer_id,
           references(:users,
             column: :id,
-            name: "items_reviewer_id_fkey",
+            name: "reviewer_id_fkey",
             type: :uuid,
             prefix: "public"
           )
@@ -22,7 +22,7 @@ defmodule Dryw.Repo.Migrations.CreateItems do
       add :reviewee_id,
           references(:users,
             column: :id,
-            name: "items_reviewee_id_fkey",
+            name: "reviewee_id_fkey",
             type: :uuid,
             prefix: "public"
           )
@@ -30,10 +30,10 @@ defmodule Dryw.Repo.Migrations.CreateItems do
   end
 
   def down do
-    drop constraint(:items, "items_reviewer_id_fkey")
+    drop constraint(:appraisals, "appraisals_reviewer_id_fkey")
 
-    drop constraint(:items, "items_reviewee_id_fkey")
+    drop constraint(:appraisals, "appraisals_reviewee_id_fkey")
 
-    drop table(:items)
+    drop table(:gig_cymru_igdc_pod_360_reviews)
   end
 end

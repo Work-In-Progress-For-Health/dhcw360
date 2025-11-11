@@ -11,26 +11,27 @@ defmodule DrywWeb.Users.FormLive do
   """
 
   def mount(%{"id" => id}, _session, socket) do
-    form = AshPhoenix.Form.for_action(X, :update, domain: Dryw.Works)
-    x = Ash.get!(X, id)
+    actor = socket.assigns.current_user
+    x = Ash.get!(X, id, domain: Dryw.Accounts, actor: actor)
+    form = AshPhoenix.Form.for_action(X, :update, domain: Dryw.Accounts, actor: actor)
 
     {:ok,
      assign(socket,
-       page_title: "Edit #{x.title_case_singular()}",
+       page_title: "Edit #{X.title_case_singular()}",
        form: to_form(form),
        x: x
      )}
   end
 
-  def mount(_params, _session, socket) do
-    form = AshPhoenix.Form.for_create(X, :create)
-
-    {:ok,
-     assign(socket,
-       page_title: "New #{X.title_case_singular()}",
-       form: to_form(form)
-     )}
-  end
+  # def mount(_params, _session, socket) do
+  #   form = AshPhoenix.Form.for_create(X, :create)
+  #
+  #   {:ok,
+  #    assign(socket,
+  #      page_title: "New #{X.title_case_singular()}",
+  #      form: to_form(form)
+  #    )}
+  # end
 
   @doc """
   Render.
@@ -39,7 +40,7 @@ defmodule DrywWeb.Users.FormLive do
     ~H"""
     <Layouts.app {assigns}>
       <.header>
-        {@page_title}
+        {@current_user.email}
       </.header>
 
       <.form
@@ -52,24 +53,11 @@ defmodule DrywWeb.Users.FormLive do
       >
 
         <style>
-        label {
-          display: block;
-          color: red;
-        }
+          label {
+            font-size: 1.1em;
+            color: black;
+          }
         </style>
-
-        <!-- TODO: required -->
-        <.input
-          type="textarea"
-          field={form[:email]}
-          label="Your email address:"
-          placeholder="example@example.com"
-          autofocus
-          cols="80"
-          rows="1"
-        />
-
-        <h2>What email addresses do you want to invite to review you?</h2>
 
         <!-- TODO: required -->
         <.input
@@ -102,7 +90,7 @@ defmodule DrywWeb.Users.FormLive do
         <.input
           type="textarea"
           field={form[:peers_email_addresses]}
-          label="Your peers, if applicable:"
+          label="Any peers you want to invite to review you, such as colleagues:"
           placeholder="example@example.com, example@example.com, example@example.com"
           cols="80"
           rows="3"
@@ -111,7 +99,7 @@ defmodule DrywWeb.Users.FormLive do
         <.input
           type="textarea"
           field={form[:others_email_addresses]}
-          label="Your other connections, such as coworkers, collaborators, etc.:"
+          label="Any others you want to invite to review you, such as collaborators:"
           placeholder="example@example.com, example@example.com, example@example.com"
           cols="80"
           rows="3"

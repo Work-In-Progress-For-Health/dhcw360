@@ -1,3 +1,3 @@
 defmodule Dryw.Mailer do
-  use Swoosh.Mailer, otp_app: :drwy
+  use Swoosh.Mailer, otp_app: :dryw
 end

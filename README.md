@@ -1,6 +1,6 @@
-# GIG Cymru IGDC Drwy
+# GIG Cymru IGDC Dryw
 
-GIG Cymru IGDC Drwy / NHS Wales DHCW Wren:
+GIG Cymru IGDC Dryw / NHS Wales DHCW Wren:
 
 - This is a web app for custom staff surveys using agile discovery for Digital Health and Care Wales (DHCW) Values-Based 360 Feedback.
 
@@ -13,8 +13,8 @@ GIG Cymru IGDC Drwy / NHS Wales DHCW Wren:
 Run:
 
 ```sh
-git clone https://github.com/work-in-progress-for-health/gig-cymru-igdc-drwy
-cd gig-cymru-igdc-drwy
+git clone https://github.com/work-in-progress-for-health/gig-cymru-igdc-dryw
+cd gig-cymru-igdc-dryw
 mix ash.setup
 mix cinder.install
 mix phx.server
@@ -27,8 +27,8 @@ To develop this app from scratch, here are steps.
 ### Create
 
 ```sh
-mix igniter.new drwy --module Dryw --with phx.new --install ash,ash_phoenix,ash_postgres,ash_backpex,cinder,mdex,recase
-cd drwy
+mix igniter.new dryw --module Dryw --with phx.new --install ash,ash_phoenix,ash_postgres,ash_backpex,cinder,mdex,recase
+cd dryw
 ```
 
 ### Authentication

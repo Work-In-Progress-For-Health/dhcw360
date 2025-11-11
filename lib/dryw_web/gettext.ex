@@ -21,5 +21,5 @@ defmodule DrywWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext.Backend, otp_app: :drwy
+  use Gettext.Backend, otp_app: :dryw
 end

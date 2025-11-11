@@ -1,4 +1,4 @@
-defmodule DrywWeb.Items.Test do
+defmodule DrywWeb.GigCymruIgdcPod360.Reviews.Test do
   import Phoenix.LiveViewTest
   use DrywWeb.ConnCase
   use DrywWeb.AuthCase
@@ -15,7 +15,7 @@ defmodule DrywWeb.Items.Test do
   end
 
   test "new", %{conn: conn} do
-    conn = get(conn, ~p"/items/new")
+    conn = get(conn, ~p"/gig-cymru/igdc/pod/360/reviews/new")
     response = html_response(conn, 200)
     assert response =~ "Collaboration"
     assert response =~ "Innovation"
@@ -25,7 +25,7 @@ defmodule DrywWeb.Items.Test do
   end
 
   test "create", %{conn: conn} do
-    {:ok, lv, _html} = live(conn, ~p"/items/new")
+    {:ok, lv, _html} = live(conn, ~p"/gig-cymru/igdc/pod/360/reviews/new")
     result =
       lv
       |> form("#x_form", %{

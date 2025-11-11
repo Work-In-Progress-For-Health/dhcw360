@@ -290,7 +290,7 @@ defmodule DrywWeb.CoreComponents do
     ~H"""
     <header class={[@actions != [] && "flex items-center justify-between gap-6", "pb-4"]}>
       <div>
-        <h1 class="text-lg font-semibold leading-8">
+        <h1>
           {render_slot(@inner_block)}
         </h1>
         <p :if={@subtitle != []} class="text-sm text-base-content/70">
@@ -416,35 +416,6 @@ defmodule DrywWeb.CoreComponents do
   def icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
-    """
-  end
-
-  @doc """
-  Render a form section with a headline, paragraph, and radio buttons
-  """
-
-  attr :form, :any, required: true
-  attr :id, :atom, required: true
-  attr :h2, :string, required: true
-  attr :p, :string, required: true
-
-  def section_with_radio(assigns) do
-    ~H"""
-    <section
-      id={"section_#{@id}"}
-      phx-update="ignore"
-    >
-      <h2>{@h2}</h2>
-      <p>{@p}</p>
-      <ul>
-        <li><.input field={@form[@id]} type="checkbox" label="Rarely = 10% of time or less" /></li>
-        <li><.input field={@form[@id]} type="checkbox" label="Sometimes = 30% of time" /></li>
-        <li><.input field={@form[@id]} type="checkbox" label="Average = 50% of time" /></li>
-        <li><.input field={@form[@id]} type="checkbox" label="Usually = 70% of time" /></li>
-        <li><.input field={@form[@id]} type="checkbox" label="Nearly Always = 90% of time or more" /></li>
-        <li><.input field={@form[@id]} type="checkbox" label="No opportunity to observe" /></li>
-      </ul>
-    </section>
     """
   end
 

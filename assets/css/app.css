@@ -6,7 +6,7 @@
 @source "../../deps/cinder";
 @source "../css";
 @source "../js";
-@source "../../lib/drwy_web";
+@source "../../lib/dryw_web";
 
 /* A Tailwind plugin that makes "hero-#{ICON}" classes available.
    The heroicons installation itself is managed by your mix.exs */
@@ -105,3 +105,11 @@
 [data-phx-session], [data-phx-teleported-src] { display: contents }
 
 /* This file is for your main application CSS */
+@layer base {
+  h1 {
+    font-size: var(--text-2xl);
+  }
+  h2 {
+    font-size: var(--text-xl);
+  }
+}

@@ -55,31 +55,15 @@ defmodule DrywWeb.Router do
                     Elixir.AshAuthentication.Phoenix.Overrides.DaisyUI
                   ]
 
-    # Remove this if you do not want to use the reset password feature
-    reset_route auth_routes_prefix: "/auth",
-                overrides: [
-                  DrywWeb.AuthOverrides,
-                  Elixir.AshAuthentication.Phoenix.Overrides.DaisyUI
-                ]
-
-    # Remove this if you do not use the confirmation strategy
-    confirm_route Dryw.Accounts.User, :confirm_new_user,
-      auth_routes_prefix: "/auth",
-      overrides: [DrywWeb.AuthOverrides, Elixir.AshAuthentication.Phoenix.Overrides.DaisyUI]
-
-    # Remove this if you do not use the magic link strategy.
     magic_sign_in_route(Dryw.Accounts.User, :magic_link,
       auth_routes_prefix: "/auth",
       overrides: [DrywWeb.AuthOverrides, Elixir.AshAuthentication.Phoenix.Overrides.DaisyUI]
     )
 
-    live "/items/new", Items.FormLive, :new
-    # live "/items/:id", Users.ShowLive
-    live "/items/:id/edit", Items.FormLive, :update
-
-    live "/users/new", Users.FormLive, :new
-    # live "/users/:id", Users.ShowLive
-    live "/users/:id/edit", Users.FormLive, :update
+    ash_authentication_live_session :session_name, on_mount: {DrywWeb.LiveUserAuth, :live_user_required} do
+      live "/users/:id/edit", Users.FormLive, :update
+      live "/gig-cymru/igdc/pod/360/reviews/new", GigCymruIgdcPod360.Reviews.FormLive, :new
+    end
 
   end
 
@@ -89,7 +73,7 @@ defmodule DrywWeb.Router do
   # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
-  if Application.compile_env(:drwy, :dev_routes) do
+  if Application.compile_env(:dryw, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
     # it behind authentication and allow only admins to access it.
     # If your application does not have an admins-only section yet,
@@ -105,4 +89,5 @@ defmodule DrywWeb.Router do
 
     end
   end
+
 end

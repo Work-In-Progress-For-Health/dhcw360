@@ -2,15 +2,15 @@
   "attributes": [
     {
       "allow_nil?": false,
-      "default": "nil",
+      "default": "fragment(\"gen_random_uuid()\")",
       "generated?": false,
       "precision": null,
       "primary_key?": true,
       "references": null,
       "scale": null,
       "size": null,
-      "source": "jti",
-      "type": "text"
+      "source": "id",
+      "type": "uuid"
     },
     {
       "allow_nil?": false,
@@ -21,11 +21,11 @@
       "references": null,
       "scale": null,
       "size": null,
-      "source": "subject",
-      "type": "text"
+      "source": "email",
+      "type": "citext"
     },
     {
-      "allow_nil?": false,
+      "allow_nil?": true,
       "default": "nil",
       "generated?": false,
       "precision": null,
@@ -33,19 +33,7 @@
       "references": null,
       "scale": null,
       "size": null,
-      "source": "expires_at",
-      "type": "utc_datetime"
-    },
-    {
-      "allow_nil?": false,
-      "default": "nil",
-      "generated?": false,
-      "precision": null,
-      "primary_key?": false,
-      "references": null,
-      "scale": null,
-      "size": null,
-      "source": "purpose",
+      "source": "primary_manager_email_address",
       "type": "text"
     },
     {
@@ -57,32 +45,44 @@
       "references": null,
       "scale": null,
       "size": null,
-      "source": "extra_data",
-      "type": "map"
+      "source": "secondary_managers_email_addresses",
+      "type": "text"
     },
     {
-      "allow_nil?": false,
-      "default": "fragment(\"(now() AT TIME ZONE 'utc')\")",
+      "allow_nil?": true,
+      "default": "nil",
       "generated?": false,
       "precision": null,
       "primary_key?": false,
       "references": null,
       "scale": null,
       "size": null,
-      "source": "created_at",
-      "type": "utc_datetime_usec"
+      "source": "direct_reports_email_addresses",
+      "type": "text"
     },
     {
-      "allow_nil?": false,
-      "default": "fragment(\"(now() AT TIME ZONE 'utc')\")",
+      "allow_nil?": true,
+      "default": "nil",
       "generated?": false,
       "precision": null,
       "primary_key?": false,
       "references": null,
       "scale": null,
       "size": null,
-      "source": "updated_at",
-      "type": "utc_datetime_usec"
+      "source": "peers_email_addresses",
+      "type": "text"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "precision": null,
+      "primary_key?": false,
+      "references": null,
+      "scale": null,
+      "size": null,
+      "source": "others_email_addresses",
+      "type": "text"
     }
   ],
   "base_filter": null,
@@ -90,8 +90,23 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "9510D07C5A34AE2D1BA85075EAA4C13F093D65D08FACC2867C2DA2F17C2FBC3F",
-  "identities": [],
+  "hash": "3F112860C7D6AABCA22CB37076C6C687C5EE56DCDFE192553711917AE77D7720",
+  "identities": [
+    {
+      "all_tenants?": false,
+      "base_filter": null,
+      "index_name": "users_unique_email_index",
+      "keys": [
+        {
+          "type": "atom",
+          "value": "email"
+        }
+      ],
+      "name": "unique_email",
+      "nils_distinct?": true,
+      "where": null
+    }
+  ],
   "multitenancy": {
     "attribute": null,
     "global": null,
@@ -99,5 +114,5 @@
   },
   "repo": "Elixir.Dryw.Repo",
   "schema": null,
-  "table": "tokens"
+  "table": "users"
 }

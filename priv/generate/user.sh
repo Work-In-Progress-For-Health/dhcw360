@@ -2,7 +2,7 @@
 set -euf
 
 export App=Dryw
-export app=drwy
+export app=dryw
 export Dom=Accounts
 export dom=accounts
 export Resource=User

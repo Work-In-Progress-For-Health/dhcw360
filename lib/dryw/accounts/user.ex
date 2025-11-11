@@ -1,6 +1,6 @@
 defmodule Dryw.Accounts.User do
   use Ash.Resource,
-    otp_app: :drwy,
+    otp_app: :dryw,
     domain: Dryw.Accounts,
     data_layer: AshPostgres.DataLayer,
     authorizers: [Ash.Policy.Authorizer],

@@ -10,13 +10,13 @@ defmodule Dryw.Application do
     children = [
       DrywWeb.Telemetry,
       Dryw.Repo,
-      {DNSCluster, query: Application.get_env(:drwy, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:dryw, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Dryw.PubSub},
       # Start a worker by calling: Dryw.Worker.start_link(arg)
       # {Dryw.Worker, arg},
       # Start to serve requests, typically the last entry
       DrywWeb.Endpoint,
-      {AshAuthentication.Supervisor, [otp_app: :drwy]}
+      {AshAuthentication.Supervisor, [otp_app: :dryw]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

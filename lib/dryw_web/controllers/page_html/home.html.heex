@@ -1,15 +1,15 @@
 <Layouts.flash_group flash={@flash} />
 
-<h1>DHCW Values-Based 360 Feedback</h1>
+<h1 class="h1">Digital Health and Care Wales (DHCW) Values-Based 360 Feedback</h1>
 
 <p>
-
-  Digital Health and Care Wales (DHCW) Values-Based 360 Feedback Tool.
-
-  <ul>
-    <li>This is a simple web app pilot project that enables staff to try 360 feedback.</li>
-    <li>This is research work in progress, not for official use nor production use.</li>
-    <li>Prototype launch goal is event on November 10 2025 featuring AI and HR.</li>
-  </ul>
-
+  <%= if @current_user do %>
+    <.link navigate={~p"/users/#{@current_user.id}/edit"}>
+      Edit your user profile
+    </.link>
+  <% else %>
+    <.link navigate="/register">
+      Register
+    </.link>
+  <% end %>
 </p>

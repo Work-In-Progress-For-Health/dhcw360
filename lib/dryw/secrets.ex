@@ -7,6 +7,6 @@ defmodule Dryw.Secrets do
         _opts,
         _context
       ) do
-    Application.fetch_env(:drwy, :token_signing_secret)
+    Application.fetch_env(:dryw, :token_signing_secret)
   end
 end

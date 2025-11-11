@@ -1,14 +1,14 @@
-defmodule Dryw.Accounts.Item do
+defmodule Dryw.GigCymruIgdcPod360.Review do
   use Ash.Resource,
-    otp_app: :drwy,
+    otp_app: :dryw,
     domain: Dryw.Accounts,
     data_layer: AshPostgres.DataLayer
   use Dryw.Accounts.User.Fab
 
   def snake_case_singular(), do: "item"
   def snake_case_plural(), do: "items"
-  def title_case_singular(), do: "Item"
-  def title_case_plural(), do: "Items"
+  def title_case_singular(), do: "Review"
+  def title_case_plural(), do: "Reviews"
 
   postgres do
     table "items"

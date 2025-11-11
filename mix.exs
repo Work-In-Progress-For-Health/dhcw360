@@ -3,7 +3,7 @@ defmodule Dryw.MixProject do
 
   def project do
     [
-      app: :drwy,
+      app: :dryw,
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -94,10 +94,10 @@ defmodule Dryw.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ash.setup --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind drwy", "esbuild drwy"],
+      "assets.build": ["compile", "tailwind dryw", "esbuild dryw"],
       "assets.deploy": [
-        "tailwind drwy --minify",
-        "esbuild drwy --minify",
+        "tailwind dryw --minify",
+        "esbuild dryw --minify",
         "phx.digest"
       ],
       precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]

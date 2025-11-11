@@ -3,7 +3,7 @@ defmodule DrywWeb.AuthCase do
   This module defines the test case to be used by tests that require setting up
   authentication.
 
-  This example is developed for a typical resource "User" and "Item", and uses
+  This example is developed for a typical resource "User" and "Review", and uses
   AshAuthentication magic link strategy, with a default setup of user email
   address. Modify this example as you wish for your own needs and settings.
 

@@ -1,6 +1,6 @@
 defmodule Dryw.Repo do
   use AshPostgres.Repo,
-    otp_app: :drwy
+    otp_app: :dryw
 
   @impl true
   def installed_extensions do

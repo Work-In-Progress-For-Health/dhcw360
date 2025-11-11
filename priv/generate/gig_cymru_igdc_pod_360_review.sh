@@ -2,13 +2,13 @@
 set -euf
 
 export App=Dryw
-export app=drwy
-export Dom=Accounts
-export dom=accounts
-export Resource=Item
-export resource=item
-export Resources=Items
-export resources=items
+export app=dryw
+export Dom=GigCymruIgdcPod360
+export dom=gig_cymru_igdc_pod_360
+export Resource=Review
+export resource=appraisal
+export Resources=Review
+export resources=appraisals
 
 mix ash.gen.resource \
     $App.$Dom.$Resource \
@@ -16,8 +16,8 @@ mix ash.gen.resource \
     --default-actions create,read,update,destroy \
     --extend postgres \
     --uuid-primary-key id \
-    --relationship belongs_to:reviewer:$App.$Dom.User \
-    --relationship belongs_to:reviewee:$App.$Dom.User \
+    --relationship belongs_to:reviewer:$App.Accounts.User \
+    --relationship belongs_to:reviewee:$App.Accounts.User \
     --attribute collaboration int \
     --attribute innovation int \
     --attribute inclusive int \
@@ -30,15 +30,15 @@ mix ash.migrate
 mkdir -p test/$app/$dom
 touch test/$app/$dom/$resource.ex
 
-mkdir -p lib/${app}_web/live/$resources
-touch lib/${app}_web/live/$resources/form_live.ex
-touch lib/${app}_web/live/$resources/index_live.ex
-touch lib/${app}_web/live/$resources/show_live.ex
+mkdir -p lib/${app}_web/$dom/$resources
+touch lib/${app}_web/$dom/$resources/form_live.ex
+touch lib/${app}_web/$dom/$resources/index_live.ex
+touch lib/${app}_web/$dom/$resources/show_live.ex
 
-mkdir -p test/${app}_web/live/$resources
-touch test/${app}_web/live/$resources/form_test.ex
-touch test/${app}_web/live/$resources/index_test.exs
-touch test/${app}_web/live/$resources/show_test.exs
+mkdir -p test/${app}_web/$dom/$resources
+touch test/${app}_web/$dom/$resources/form_test.ex
+touch test/${app}_web/$dom/$resources/index_test.exs
+touch test/${app}_web/$dom/$resources/show_test.exs
 
 cat << EOF
 Edit file lib/${app}_web/router.ex to add live routes:

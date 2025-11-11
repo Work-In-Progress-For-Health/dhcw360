@@ -31,7 +31,7 @@ classDiagram
         sign_in_with_magic_link(String token)
         request_magic_link(CiString email)
     }
-    class Item {
+    class Review {
         UUID id
         update()
         create()
@@ -39,4 +39,4 @@ classDiagram
         read()
     }
 
-    Item -- User
+    Review -- User
