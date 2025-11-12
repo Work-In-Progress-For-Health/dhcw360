@@ -14,24 +14,29 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
   """
 
   def mount(%{"id" => id}, _session, socket) do
-    form = AshPhoenix.Form.for_action(X, :update, domain: Dryw.Works)
-    x = Ash.get!(X, id)
+    actor = socket.assigns.current_user
+    x = Ash.get!(X, id, domain: Dryw.Accounts, actor: actor)
+    form = AshPhoenix.Form.for_update(X, :update, domain: Dryw.Accounts, actor: actor)
 
     {:ok,
      assign(socket,
-       page_title: "Edit #{x.title_case_singular()}",
+       page_title: "Edit #{X.title_case_singular()}",
        form: to_form(form),
-       x: x
+       x: x,
+       reviewee: x.reviewee
      )}
   end
 
-  def mount(_params, _session, socket) do
-    form = AshPhoenix.Form.for_create(X, :create)
+  def mount(%{"reviewee" => reviewee_email}, _session, socket) do
+    actor = socket.assigns.current_user
+    reviewee =  Ash.get!(Dryw.Accounts.User, [email: reviewee_email], domain: Dryw.Accounts, actor: actor)
+    form = AshPhoenix.Form.for_action(X, :create, domain: Dryw.Accounts, actor: actor)
 
     {:ok,
      assign(socket,
        page_title: "New #{X.title_case_singular()}",
-       form: to_form(form)
+       form: to_form(form),
+       reviewee: reviewee
      )}
   end
 
@@ -55,13 +60,20 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
       >
 
         <style>
+        p {
+        font-size: 1em;
+        }
         li {
         }
         </style>
 
+        <ul class="pb-6">
+          <li>From: {@current_user.email}</li>
+          <li>To: {@reviewee.email}</li>
+        </ul>
+
         <.section_headline_paragraph
-          form={form}
-          section_id={:section_collaboration}
+          id={:section_collaboration}
           headline="Collaboration"
           paragraph="Examples: Teamwork • Supporting and challenging • Listening and valuing each other • Reflecting • Continuous learning"
         >
@@ -76,8 +88,7 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
         </.section_headline_paragraph>
 
         <.section_headline_paragraph
-          form={form}
-          section_id={:section_innovation}
+          id={:section_innovation}
           headline="Innovation"
           paragraph="Examples: Creative thinking • Courageous • Transformational • Embracing change • Ambitious"
         >
@@ -92,8 +103,7 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
         </.section_headline_paragraph>
 
         <.section_headline_paragraph
-          form={form}
-          section_id={:section_inclusive}
+          id={:section_inclusive}
           headline="Inclusive"
           paragraph="Examples: Diversity • Equality • Respect • Fairness • Equity • Celebrate success and achievements"
         >
@@ -108,8 +118,7 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
         </.section_headline_paragraph>
 
         <.section_headline_paragraph
-          form={form}
-          section_id={:section_excellence}
+          id={:section_excellence}
           headline="Excellence"
           paragraph="Examples: Empowerment • Quality • Continuous improvement • Drive for results • Pride in what we do • Accountability"
         >
@@ -124,8 +133,7 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
         </.section_headline_paragraph>
 
         <.section_headline_paragraph
-          form={form}
-          section_id={:section_compassion}
+          id={:section_compassion}
           headline="Compassion"
           paragraph="Examples: Dignity • Kindness • Empathy • Personal responsibility • Trust"
         >
@@ -139,7 +147,11 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
           </.radio_group>
         </.section_headline_paragraph>
 
-        <.button type="primary">Save</.button>
+        <!-- TODO: validate that the person has submitted enough information -->
+        <div class="mt-2 mb-8">
+          <.button type="primary">Save</.button>
+        </div>
+
       </.form>
     </Layouts.app>
     """

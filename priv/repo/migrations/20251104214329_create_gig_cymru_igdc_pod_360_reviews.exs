@@ -26,6 +26,13 @@ defmodule Dryw.Repo.Migrations.CreateGigCymruIgdcPod360Reviews do
             type: :uuid,
             prefix: "public"
           )
+
+      add :collaboration, :integer
+      add :innovation, :integer
+      add :inclusive, :integer
+      add :excellence, :integer
+      add :compassion, :integer
+
     end
   end
 

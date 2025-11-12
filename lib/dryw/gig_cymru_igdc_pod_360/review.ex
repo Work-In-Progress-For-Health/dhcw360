@@ -5,13 +5,13 @@ defmodule Dryw.GigCymruIgdcPod360.Review do
     data_layer: AshPostgres.DataLayer
   use Dryw.Accounts.User.Fab
 
-  def snake_case_singular(), do: "item"
-  def snake_case_plural(), do: "items"
+  def snake_case_singular(), do: "review"
+  def snake_case_plural(), do: "reviews"
   def title_case_singular(), do: "Review"
   def title_case_plural(), do: "Reviews"
 
   postgres do
-    table "items"
+    table "gig_cymru_igdc_pod_360_reviews"
     repo Dryw.Repo
   end
 

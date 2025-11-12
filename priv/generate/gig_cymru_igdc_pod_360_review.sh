@@ -18,11 +18,11 @@ mix ash.gen.resource \
     --uuid-primary-key id \
     --relationship belongs_to:reviewer:$App.Accounts.User \
     --relationship belongs_to:reviewee:$App.Accounts.User \
-    --attribute collaboration int \
-    --attribute innovation int \
-    --attribute inclusive int \
-    --attribute excellence int \
-    --attribute compassion int \
+    --attribute collaboration:integer \
+    --attribute innovation:integer \
+    --attribute inclusive:integer \
+    --attribute excellence:integer \
+    --attribute compassion:integer \
 
 mix ash.codegen create_$resources
 mix ash.migrate

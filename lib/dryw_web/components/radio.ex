@@ -53,24 +53,19 @@ defmodule DrywWeb.Components.Radio do
     attr :value, :string, required: true
   end
 
-  slot :inner_block
-
   def radio_group(assigns) do
     ~H"""
-    <div>
-      <%= render_slot(@inner_block) %>
-      <div :for={{radio, idx} <- Enum.with_index(@radio)}>
-        <label>
-          <input
-            type="radio"
-            name={@field.name}
-            id={"#{@field.id}-#{idx}"}
-            value={radio.value}
-            checked={to_string(@field.value) == to_string(radio.value)}
-          />
-          <%= render_slot(radio) %>
-        </label>
-      </div>
+    <div :for={{radio, idx} <- Enum.with_index(@radio)}>
+      <label>
+        <input
+          type="radio"
+          name={@field.name}
+          id={"#{@field.id}-#{idx}"}
+          value={radio.value}
+          checked={to_string(@field.value) == to_string(radio.value)}
+        />
+        <%= render_slot(radio) %>
+      </label>
     </div>
     """
   end

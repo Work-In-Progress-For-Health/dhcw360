@@ -37,7 +37,7 @@ defmodule DrywWeb.Layouts do
     ~H"""
     <header class="navbar px-4 sm:px-6 lg:px-8">
       <div class="flex-1">
-        DHCW Values-Based 360 Review
+        DHCW Values-Based 360 Feedback
       </div>
       <div class="flex-none">
         <ul class="flex flex-column px-1 space-x-4 items-center">

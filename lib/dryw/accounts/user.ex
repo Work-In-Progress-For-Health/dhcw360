@@ -53,6 +53,9 @@ defmodule Dryw.Accounts.User do
 
     read :get_by_email do
       description "Looks up a user by their email"
+      argument :email, :ci_string do
+        allow_nil? false
+      end
       get_by :email
     end
 
@@ -84,7 +87,19 @@ defmodule Dryw.Accounts.User do
       run AshAuthentication.Strategy.MagicLink.Request
     end
 
-    defaults [:read, :destroy, create: [:email], update: [:email]]
+    defaults [:read, :destroy, create: :*]
+
+    update :update do
+      primary? true
+      accept [
+        :primary_manager_email_address,
+        :secondary_managers_email_addresses,
+        :direct_reports_email_addresses,
+        :peers_email_addresses,
+        :others_email_addresses
+      ]
+    end
+
   end
 
   policies do

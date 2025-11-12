@@ -13,7 +13,7 @@ defmodule DrywWeb.Users.FormLive do
   def mount(%{"id" => id}, _session, socket) do
     actor = socket.assigns.current_user
     x = Ash.get!(X, id, domain: Dryw.Accounts, actor: actor)
-    form = AshPhoenix.Form.for_action(X, :update, domain: Dryw.Accounts, actor: actor)
+    form = AshPhoenix.Form.for_update(x, :update, domain: Dryw.Accounts, actor: actor)
 
     {:ok,
      assign(socket,
@@ -54,7 +54,7 @@ defmodule DrywWeb.Users.FormLive do
 
         <style>
           label {
-            font-size: 1.1em;
+            font-size: 1em;
             color: black;
           }
         </style>
@@ -106,8 +106,11 @@ defmodule DrywWeb.Users.FormLive do
         />
 
         <!-- TODO: validate that the person has invited at least 5 people -->
-        <.button type="primary">Save</.button>
-      </.form>
+        <div class="mt-2 mb-8">
+          <.button type="primary">Save</.button>
+        </div>
+
+        </.form>
     </Layouts.app>
     """
   end
@@ -134,15 +137,29 @@ defmodule DrywWeb.Users.FormLive do
   end
 
   def handle_event("save", %{"form" => form_data}, socket) do
-    # form_data = convert_tags_param(form_data)
-    case AshPhoenix.Form.submit(socket.assigns.form, params: form_data) do
-      {:ok, _x} ->
+    actor = socket.assigns.current_user
+    case AshPhoenix.Form.submit(socket.assigns.form, params: form_data, actor: actor) do
+      {:ok, x} ->
+        emails =
+          [
+            x.primary_manager_email_address,
+            x.secondary_managers_email_addresses,
+            x.direct_reports_email_addresses,
+            x.peers_email_addresses,
+            x.others_email_addresses,
+          ]
+          |> Enum.reject(&is_nil/1)
+          |> Enum.join(" ")
+          |> String.split(~r/[,\s]+/)
+          |> Enum.join(", ")
         {:noreply,
          socket
-         |> put_flash(:info, "Saved.")
-         |> push_navigate(to: "/")}
+          |> put_flash(:info, "Saved. You can now email these people as you like: #{emails}.\n\nPlease review me at https://example.com/gig-cymru/igdc/pod/360/reviews/new/#{x.email}")
+         # |> push_navigate(to: ~p"/")
+        }
 
       {:error, form} ->
+        IO.inspect(form, label: "Save error")
         {:noreply,
          socket
          |> put_flash(:error, "Save failed.")

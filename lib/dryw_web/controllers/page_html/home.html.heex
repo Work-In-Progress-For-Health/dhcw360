@@ -1,8 +1,5 @@
-<Layouts.flash_group flash={@flash} />
+<Layouts.app flash={@flash}>
 
-<h1 class="h1">Digital Health and Care Wales (DHCW) Values-Based 360 Feedback</h1>
-
-<p>
   <%= if @current_user do %>
     <.link navigate={~p"/users/#{@current_user.id}/edit"}>
       Edit your user profile
@@ -12,4 +9,5 @@
       Register
     </.link>
   <% end %>
-</p>
+
+</Layouts.app>
