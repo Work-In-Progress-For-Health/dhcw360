@@ -87,18 +87,16 @@ defmodule Dryw.Accounts.User do
       run AshAuthentication.Strategy.MagicLink.Request
     end
 
-    defaults [:read, :destroy, create: :*]
+    defaults [:read, :destroy, :create, :update]
 
-    update :update do
-      primary? true
-      accept [
-        :primary_manager_email_address,
-        :secondary_managers_email_addresses,
-        :direct_reports_email_addresses,
-        :peers_email_addresses,
-        :others_email_addresses
-      ]
-    end
+    default_accept [
+      :email,
+      :primary_manager_email_address,
+      :secondary_managers_email_addresses,
+      :direct_reports_email_addresses,
+      :peers_email_addresses,
+      :others_email_addresses
+    ]
 
   end
 

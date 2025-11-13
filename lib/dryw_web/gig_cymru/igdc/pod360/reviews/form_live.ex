@@ -1,9 +1,9 @@
-defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
+defmodule DrywWeb.GigCymru.Igdc.Pod360.Reviews.FormLive do
   use DrywWeb, :live_view
   alias DrywWeb.Layouts
   import DrywWeb.Components.SectionHeadlineParagraph
   import DrywWeb.Components.Radio
-  alias Dryw.GigCymruIgdcPod360.Review, as: X
+  alias Dryw.GigCymru.Igdc.Pod360.Review, as: X
 
   require Logger
 
@@ -16,7 +16,7 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.FormLive do
   def mount(%{"id" => id}, _session, socket) do
     actor = socket.assigns.current_user
     x = Ash.get!(X, id, domain: Dryw.Accounts, actor: actor)
-    form = AshPhoenix.Form.for_update(X, :update, domain: Dryw.Accounts, actor: actor)
+    form = AshPhoenix.Form.for_update(x, :update, domain: Dryw.Accounts, actor: actor)
 
     {:ok,
      assign(socket,

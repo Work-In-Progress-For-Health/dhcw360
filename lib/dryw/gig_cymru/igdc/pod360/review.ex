@@ -1,9 +1,9 @@
-defmodule Dryw.GigCymruIgdcPod360.Review do
+defmodule Dryw.GigCymru.Igdc.Pod360.Review do
   use Ash.Resource,
     otp_app: :dryw,
     domain: Dryw.Accounts,
     data_layer: AshPostgres.DataLayer
-  use Dryw.Accounts.User.Fab
+  use Dryw.GigCymru.Igdc.Pod360.Review.Fab
 
   def snake_case_singular(), do: "review"
   def snake_case_plural(), do: "reviews"
@@ -16,7 +16,16 @@ defmodule Dryw.GigCymruIgdcPod360.Review do
   end
 
   actions do
-    defaults [:read, :destroy, create: [], update: []]
+    defaults [:read, :destroy, :create, :update]
+
+    default_accept [
+      :collaboration,
+      :innovation,
+      :inclusive,
+      :excellence,
+      :compassion,
+    ]
+
   end
 
   attributes do

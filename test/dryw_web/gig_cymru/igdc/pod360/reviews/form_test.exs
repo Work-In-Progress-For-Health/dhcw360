@@ -1,7 +1,8 @@
-defmodule DrywWeb.GigCymruIgdcPod360.Reviews.Test do
+defmodule DrywWeb.GigCymru.Igdc.Pod360.Reviews.Test do
   import Phoenix.LiveViewTest
   use DrywWeb.ConnCase
   use DrywWeb.AuthCase
+  alias Dryw.GigCymru.Igdc.Pod360.Review, as: X
 
   setup %{conn: conn} do
     user = my_user!()
@@ -17,23 +18,26 @@ defmodule DrywWeb.GigCymruIgdcPod360.Reviews.Test do
   test "new", %{conn: conn, user: user} do
     conn = get(conn, ~p"/gig-cymru/igdc/pod/360/reviews/new/#{user.email}")
     response = html_response(conn, 200)
+
     assert response =~ "Collaboration"
     assert response =~ "Innovation"
     assert response =~ "Inclusive"
     assert response =~ "Excellence"
     assert response =~ "Compassion"
+
   end
 
-  test "create", %{conn: conn, user: user} do
+  test "new…", %{conn: conn, user: user} do
     {:ok, lv, _html} = live(conn, ~p"/gig-cymru/igdc/pod/360/reviews/new/#{user.email}")
+    x = X.fab!
     result =
       lv
       |> form("#x_form", %{
-        "form[collaboration]" => 1,
-        "form[innovation]" => 2,
-        "form[inclusive]" => 3,
-        "form[excellence]" => 4,
-        "form[compassion]" => 5,
+        "form[collaboration]" => x.collaboration,
+        "form[innovation]" => x.innovation,
+        "form[inclusive]" => x.inclusive,
+        "form[excellence]" => x.excellence,
+        "form[compassion]" => x.compassion,
       })
       |> render_submit()
     case result do

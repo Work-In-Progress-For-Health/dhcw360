@@ -1,4 +1,4 @@
-defmodule Dryw.Repo.Migrations.CreateGigCymruIgdcPod360Reviews do
+defmodule Dryw.Repo.Migrations.CreateGigCymru.Igdc.Pod360.Reviews do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

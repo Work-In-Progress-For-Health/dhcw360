@@ -5,6 +5,6 @@ defmodule Dryw.Accounts do
   resources do
     resource Dryw.Accounts.Token
     resource Dryw.Accounts.User
-    resource Dryw.GigCymruIgdcPod360.Review
+    resource Dryw.GigCymru.Igdc.Pod360.Review
   end
 end

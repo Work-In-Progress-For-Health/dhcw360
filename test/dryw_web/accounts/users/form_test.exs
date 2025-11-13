@@ -2,6 +2,7 @@ defmodule DrywWeb.Users.Test do
   import Phoenix.LiveViewTest
   use DrywWeb.ConnCase
   use DrywWeb.AuthCase
+  alias Dryw.Accounts.User,  as: X
 
   setup %{conn: conn} do
     user = my_user!()
@@ -17,23 +18,26 @@ defmodule DrywWeb.Users.Test do
   test "edit", %{conn: conn, user: user} do
     conn = get(conn, ~p"/users/#{user.id}/edit")
     response = html_response(conn, 200)
+
     assert response =~ "Your primary manager"
     assert response =~ "Your secondary managers"
     assert response =~ "Your direct reports"
     assert response =~ "Any peers"
     assert response =~ "Any others"
+
   end
 
-  test "update", %{conn: conn, user: user} do
+  test "edit…", %{conn: conn, user: user} do
     {:ok, lv, _html} = live(conn, ~p"/users/#{user.id}/edit")
+    x = X.fab!
     result =
       lv
       |> form("#x_form", %{
-        "form[primary_manager_email_address]" => "primarymanager@example.com",
-        "form[secondary_managers_email_addresses]" => "secondarymanager0@example.com, secondarymanager1@example.com",
-        "form[direct_reports_email_addresses]" => "directs0@example.com, directs1@example.com",
-        "form[peers_email_addresses]" => "peers0@example.com, peers1@example.com",
-        "form[others_email_addresses]" => "others0@example.com, others1@example.com",
+        "form[primary_manager_email_address]" => x.primary_manager_email_address,
+        "form[secondary_managers_email_addresses]" => x.secondary_managers_email_addresses,
+        "form[direct_reports_email_addresses]" => x.direct_reports_email_addresses,
+        "form[peers_email_addresses]" => x.peers_email_addresses,
+        "form[others_email_addresses]" => x.others_email_addresses,
       })
       |> render_submit()
     case result do

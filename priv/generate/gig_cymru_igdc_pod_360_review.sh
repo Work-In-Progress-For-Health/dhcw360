@@ -3,7 +3,7 @@ set -euf
 
 export App=Dryw
 export app=dryw
-export Dom=GigCymruIgdcPod360
+export Dom=GigCymru.Igdc.Pod360
 export dom=gig_cymru_igdc_pod_360
 export Resource=Review
 export resource=appraisal
