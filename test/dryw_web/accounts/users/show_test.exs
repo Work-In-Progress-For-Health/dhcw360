@@ -1,7 +1,6 @@
 defmodule DrywWeb.Users.ShowTest do
   use DrywWeb.ConnCase
   use DrywWeb.AuthCase
-  # alias Dryw.Accounts.User, as: X
 
   setup %{conn: conn} do
     user = my_user!()

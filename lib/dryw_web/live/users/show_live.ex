@@ -13,7 +13,7 @@ defmodule DrywWeb.Users.ShowLive do
 
     {:ok,
      assign(socket,
-       page_title: "Show #{x.email}",
+       page_title: "#{x.email}",
        x: x
      )}
   end
@@ -35,16 +35,6 @@ defmodule DrywWeb.Users.ShowLive do
         <li>Peers: {@x.peers_email_addresses}</li>
         <li>Others: {@x.others_email_addresses}</li>
       </ul>
-
-      <p>You can now email these people as you wish, such as using this template…</p>
-
-      <p>From: {@x.email}</p>
-
-      <p>To: {Dryw.Accounts.User.emails(@x)}</p>
-
-      <p>Please review me at this link:</p>
-
-      <p>https://example.com/gig-cymru/igdc/pod360/reviews/new/{@x.email}</p>
 
     </Layouts.app>
     """

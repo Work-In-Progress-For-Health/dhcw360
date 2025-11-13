@@ -27,7 +27,7 @@ defmodule DrywWeb.GigCymru.Igdc.Pod360.Reviews.FormLive do
      )}
   end
 
-  def mount(%{"reviewee" => reviewee_email}, _session, socket) do
+  def mount(%{"reviewee_email" => reviewee_email}, _session, socket) do
     actor = socket.assigns.current_user
     reviewee =  Ash.get!(Dryw.Accounts.User, [email: reviewee_email], domain: Dryw.Accounts, actor: actor)
     form = AshPhoenix.Form.for_action(X, :create, domain: Dryw.Accounts, actor: actor)

@@ -17,7 +17,7 @@ defmodule DrywWeb.Users.FormLive do
 
     {:ok,
      assign(socket,
-       page_title: "Edit #{X.title_case_singular()}",
+       page_title: "#{x.email} form",
        form: to_form(form),
        x: x
      )}
